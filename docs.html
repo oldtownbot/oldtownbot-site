@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>OLDTOWNBOT — Docs</title>
+  <link rel="stylesheet" href="styles.css" />
+  <meta name="description" content="Documentation for OLDTOWNBOT, a Telegram bot that launches tokens on Raydium." />
+</head>
+<body>
+  <div class="container">
+    <nav class="nav">
+      <div class="brand">
+        <a href="index.html"><strong>OLDTOWNBOT</strong></a>
+      </div>
+      <div>
+        <a class="btn secondary" href="index.html">Home</a>
+      </div>
+    </nav>
+
+    <section class="card">
+      <h1>Docs</h1>
+      <p class="lead">OLDTOWNBOT lets you create tokens on Raydium from a Telegram chat. The <code>platformId</code> is fixed and owned by us; <strong>creating a Platform is not exposed</strong> in the bot.</p>
+
+      <h2>Getting started</h2>
+      <ol>
+        <li>Open the bot and tap <kbd>Create Mint</kbd>.</li>
+        <li>Paste your <strong>owner secret</strong> (base58 or keypair file path). For better security, use a throwaway deployer wallet.</li>
+        <li>(Optional) Upload a <strong>vanity mint</strong> keypair JSON to force a specific mint address.</li>
+        <li>Fill in the parameters listed below and confirm.</li>
+      </ol>
+
+      <h2>Parameters you can change</h2>
+      <ul class="params">
+        <li><strong>Token name</strong> &amp; <strong>ticker</strong></li>
+        <li><strong>Decimals</strong></li>
+        <li><strong>Metadata URI</strong> (<code>ipfs://</code> or <code>https://</code>)</li>
+        <li><strong>Migrate type</strong>: <code>amm</code> or <code>cpmm</code></li>
+        <li><strong>Total supply</strong></li>
+        <li><strong>Initial market cap</strong> (derived from <code>buyAmount</code> and fundraising inputs)</li>
+        <li><strong>Migration market cap</strong> (via <code>totalFundRaisingB</code> and curve settings)</li>
+        <li><strong>totalSellA</strong> (amount of token A sold along the curve)</li>
+        <li><strong>totalLockedAmount</strong> (vesting amount)</li>
+        <li><strong>totalFundRaisingB</strong> (quote currency fundraising target)</li>
+        <li><strong>cliffPeriod</strong> &amp; <strong>unlockPeriod</strong> (vesting)</li>
+        <li><strong>buyAmount</strong> (initial buy in quote currency)</li>
+        <li><strong>Vanity mint</strong> (upload JSON of the mint keypair)</li>
+      </ul>
+
+      <h2>File formats — vanity mint</h2>
+      <p>We accept the common Solana keypair JSON formats:</p>
+      <ul>
+        <li><code>[1, 2, 3, ... 64 numbers]</code> (standard <code>solana-keygen</code>)</li>
+        <li><code>{ "secretKey": [ ... ] }</code></li>
+        <li><code>{ "_keypair": { "secretKey": [ ... ] } }</code></li>
+      </ul>
+
+      <h2>Security notes</h2>
+      <ul>
+        <li>Never share your owner secret in public chats.</li>
+        <li>Prefer a dedicated deployer wallet with limited funds.</li>
+        <li>Vanity mint JSON contains a private key — treat it as sensitive and delete after the launch.</li>
+      </ul>
+
+      <h2>FAQ</h2>
+      <p><strong>Can I create a Platform through the bot?</strong> No. Platform creation is disabled; the <code>platformId</code> used by the bot is fixed and owned by us.</p>
+      <p><strong>What does “initial” vs “migration” market cap mean?</strong> Initial MC is implied by your starting curve and buy amounts; migration MC is the target when migrating from bonding curve to the final pool, configured by your fundraising and curve parameters.</p>
+    </section>
+
+    <div class="footer">© 2025 OLDTOWNBOT</div>
+  </div>
+</body>
+</html>
